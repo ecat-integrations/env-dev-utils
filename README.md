@@ -8,6 +8,14 @@
 
 本工具包适用于所有使用 **ruoyi-ui** 框架（支持 Vue2 和 Vue3）的前端项目。当 ruoyi-ui 框架的前端需要加载 env 相关的集成模块时，需要引用此工具包。
 
+## 测试运行
+启动/重启 ecat-core和 ruoyi集成的ruoyi-ui 模块，启动 ecat-core 和 ruoyi-ui 的服务。
+```bash
+# 在项目根目录运行
+./ecat-integrations/env-dev-utils/restart-ecat-dev.sh
+```
+
+
 ## 使用方式
 
 ### 1. 独立 Git 仓库
@@ -60,6 +68,7 @@ const ecatTailwindLoader = path.resolve(
 - env-material-manager
 - env-patrol-manager
 - env-quality-control-manager
+- env-compare-manager
 
 ## 版本要求
 

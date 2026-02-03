@@ -1,7 +1,7 @@
 // 注意：此文件由 build.js 自动生成，请勿手动修改，否则会被自动覆盖！
 /**
  * @description ecat集成模块的入口文件
- * 
+ *
  * @author coffee
  */
 
