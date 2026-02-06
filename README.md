@@ -15,6 +15,16 @@
 ./ecat-integrations/env-dev-utils/restart-ecat-dev.sh
 ```
 
+## 前端发布
+批量构建所有 env- 集成模块的 Vue 前端资源。
+```bash
+# 在本目录
+./release-env-vue.sh
+# 在项目根目录运行
+./ecat-integrations/env-dev-utils/release-env-vue.sh
+```
+此脚本会遍历所有 env- 集成模块，在各自的 `vue-modules` 目录下执行 `npm install` 和 `npm run release`。
+
 
 ## 使用方式
 
