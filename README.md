@@ -8,6 +8,11 @@
 
 本工具包适用于所有使用 **ruoyi-ui** 框架（支持 Vue2 和 Vue3）的前端项目。当 ruoyi-ui 框架的前端需要加载 env 相关的集成模块时，需要引用此工具包。
 
+## 前准备
+- 需确保你修改的前端代码已经 打包发布 dist 到java 的 resources 目录下
+- 然后确保你修改的java 都已经 mvn clean install 成功
+
+
 ## 测试运行
 启动/重启 ecat-core和 ruoyi集成的ruoyi-ui 模块，启动 ecat-core 和 ruoyi-ui 的服务。
 ```bash
