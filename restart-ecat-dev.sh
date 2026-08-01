@@ -1,7 +1,7 @@
 #!/bin/bash
 # ECAT开发环境重启脚本
 # 用于终止旧的前后端服务并启动新的服务
-# 使用方法：从项目根目录 /home/dev/app 运行此脚本
+# 使用方法：从 workspace 根目录运行此脚本（PROJECT_ROOT 自适应 = SCRIPT_DIR/../..，任意目录调用均可）
 
 set -e
 
@@ -120,10 +120,11 @@ echo ""
 # 3. 检查ecat-core JAR是否存在
 # ============================================
 echo -e "${YELLOW}检查 ecat-core JAR 文件...${NC}"
-ECAT_CORE_JAR="$PROJECT_ROOT/ecat-core/target/ecat-core-1.0.1.jar"
+# jar 版本自适应：取 ecat-core/target 下最高版本 jar，排除 jar-with-dependencies（不再硬编码版本号）
+ECAT_CORE_JAR=$(ls "$PROJECT_ROOT"/ecat-core/target/ecat-core-*.jar 2>/dev/null | grep -v 'jar-with-dependencies' | sort -V | tail -1)
 
-if [ ! -f "$ECAT_CORE_JAR" ]; then
-    echo -e "${RED}错误: ecat-core JAR 文件不存在: $ECAT_CORE_JAR${NC}"
+if [ -z "$ECAT_CORE_JAR" ] || [ ! -f "$ECAT_CORE_JAR" ]; then
+    echo -e "${RED}错误: 未找到 ecat-core JAR（$PROJECT_ROOT/ecat-core/target/ecat-core-*.jar）${NC}"
     echo -e "${YELLOW}提示: 请先运行以下命令构建 ecat-core:${NC}"
     echo -e "${BLUE}cd $PROJECT_ROOT/ecat-core && mvn clean package -DskipTests${NC}"
     exit 1
