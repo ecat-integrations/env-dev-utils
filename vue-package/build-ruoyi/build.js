@@ -74,11 +74,16 @@ function generateRouteContent(route, basePath, moduleNamePrefix, moduleName, isR
     ]` 
     : '';
 
+  const permissionsLine = route.permissions
+    ? `"permissions": ${JSON.stringify(route.permissions)},
+    `
+    : '';
+
   return `{
     "name": "${moduleNamePrefix}_${route.name}",
     "path": "${pathValue}",  
     "hidden": ${route.hidden !== undefined ? route.hidden : false},
-    "redirect": "${route.redirect || 'noRedirect'}",
+    ${permissionsLine}"redirect": "${route.redirect || 'noRedirect'}",
     "component": ${component},
     ${route.alwaysShow !== undefined ? `"alwaysShow": ${route.alwaysShow},` : ''}
     "meta": ${metaString}
