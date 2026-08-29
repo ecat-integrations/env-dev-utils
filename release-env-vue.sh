@@ -14,7 +14,7 @@ modules=(
   "env-alarm-manager"
   "env-maintenance-manager"
   "env-patrol-manager"
-  "env-quality-control-manager"
+  "env-qc-manager"
   "env-device-manager"
   "env-material-manager"
   "env-access-control"
