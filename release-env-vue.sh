@@ -20,6 +20,8 @@ modules=(
   "env-access-control"
   "env-data-manager"
   "env-compare-manager"
+  "env-air-device-manager"
+  "env-air-station-manager"
 )
 
 # 遍历模块列表
