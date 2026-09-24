@@ -133,7 +133,8 @@ echo ""
 #      (模式串只在文件内容里,不进脚本进程 argv);comm 过滤是对边缘内联调用场景的硬保险,零成本兜底。
 find_residual_ecat_cores() {
     pgrep -f 'java -jar .*ecat-core-.*\.jar' 2>/dev/null | while read -r PID; do
-        [ "$(cat "/proc/$PID/comm" 2>/dev/null)" = "java" ] && echo "$PID"
+        # || true 兜住「否决路径」的退出码 1——否则 while 循环返回 1 → 函数 → 赋值语句 → set -e 中止整个重启
+        [ "$(cat "/proc/$PID/comm" 2>/dev/null)" = "java" ] && echo "$PID" || true
     done
 }
 echo -e "${YELLOW}扫描残留 ecat-core 进程(非脚本启动的兜底)...${NC}"
