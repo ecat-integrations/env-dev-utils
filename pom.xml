@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!--
+  env-* 系列 vue 子模块的公共构建工具箱工件。vue-package/ 目录树（公共 webpack 配置、
+  build-ruoyi 路由生成脚本、tailwind loader）原样打进 jar，经 Maven 仓库分发；
+  业务集成仓以 provided 依赖 + dependency-plugin unpack 取用，使单仓克隆即可完成前端构建，
+  不再跨仓相对路径引用本仓工作区文件。
+-->
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.ecat</groupId>
+  <artifactId>env-frontend-buildtools</artifactId>
+  <version>1.0.0</version>
+  <packaging>jar</packaging>
+  <name>env-frontend-buildtools</name>
+
+  <build>
+    <resources>
+      <!-- vue-package 整树原样入 jar，jar 内路径形态为 vue-package/**，与目录原布局一致 -->
+      <resource>
+        <directory>vue-package</directory>
+        <targetPath>vue-package</targetPath>
+        <includes>
+          <include>**/*</include>
+        </includes>
+      </resource>
+    </resources>
+  </build>
+</project>
